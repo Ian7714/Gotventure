@@ -1,6 +1,6 @@
 if isDashing = false
 {	
-	ysp += 0.1 //Gravity
+	ysp += 0.14 //Gravity
 	xsp = 0	//Reset xsp
 }
 
@@ -10,81 +10,79 @@ if keyboard_check(ord("D")) || keyboard_check(vk_right)
 {
 	if isDashing = false
 	{
-		xsp = 1
-		ResetFacing()
-		isFacing[0] = true
+		xsp = playerSpd
 	}
-	/*else
-	{
-		xsp = +dashPower
-	}*/
 }
 if keyboard_check(ord("A")) || keyboard_check(vk_left) 
 {
 	if isDashing = false
 	{
-		xsp = -1
-		ResetFacing()
-		isFacing[1] = true
+		xsp = -playerSpd
 	}
-	/*else
-	{
-		xsp = -dashPower
-	}*/
 }
 
 //Facing up and down
 if keyboard_check(ord("W")) || keyboard_check(vk_up) 
 {
-	ResetFacing()
-	isFacing[2] = true
+	//look up
 }
+
 if keyboard_check(ord("S")) || keyboard_check(vk_down) 
 {
-	ResetFacing()
-	isFacing[3] = true
+	//look down
 }
 
 //Reset Array
-function ResetFacing()
+/*function ResetFacing()
 {
 	for(var i = 0; i < array_length(isFacing); i++)
 	{
 		isFacing[i] = false
 	}	
-}
+}*/
 #endregion
 #region Jump
 if keyboard_check_pressed(vk_space) && isGrounded = true
 {
-	ysp = -2.5 //max jump power
+	ysp = -jumpPower //max jump power
 }
 if ysp < 0 && !keyboard_check(vk_space) && isDashing = false
 {
-	ysp = max(ysp, -1) //If let go of space, ysp will not be -2.5
+	ysp = max(ysp, -jumpPower/2.5) //If let go of space, ysp will not be -2.5
 }
 #endregion
 #region Dash
 if keyboard_check_pressed(ord("X")) && isDashing = false
 {
 	isDashing = true
-	DashTimer = 7 //how long the steps to dash, less means more faster but much shorter
-	if isFacing[0] = true 
+	DashTimer = 4 //how long the steps to dash, less means more faster but much shorter
+	if keyboard_check(ord("D")) || keyboard_check(vk_right)
 	{
+		isKeyPress = true
 		xsp = dashPower //the xsp value while dashing
 	}
-	if isFacing[1] = true
+	else if keyboard_check(ord("A")) || keyboard_check(vk_left) 
 	{
+		isKeyPress = true
 		xsp = -dashPower
 	}
-	if isFacing[2] = true
+	
+	if keyboard_check(ord("W")) || keyboard_check(vk_up) 
 	{
+		isKeyPress = true
 		ysp = -dashPower
 	}
-	if isFacing[3] = true
+	else if keyboard_check(ord("S")) || keyboard_check(vk_down) 
 	{
+		isKeyPress = true
 		ysp = dashPower
 	}
+	
+	if isKeyPress = false
+	{
+		xsp = dashPower	
+	}
+	isKeyPress = false
 }
 
 if isDashing = true //dash timer
@@ -120,3 +118,9 @@ if keyboard_check_pressed(vk_anykey) && VictoryTextMessagesVisible = true
 {
 	room_goto_next() //go to next the room
 }
+
+
+
+
+
+
