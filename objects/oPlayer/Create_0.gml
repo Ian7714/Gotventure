@@ -5,10 +5,10 @@ visible = true //make player visible
 xsp = 0
 ysp = 0
 
-playerSpd = 1.5 //speed
-jumpPower = 4 //jump
+playerSpd = 3 //speed
+jumpPower = 6 //jump
 DashTimer = 0
-dashPower = 10 //the xsp value while dashing
+dashPower = 17 //the xsp value while dashing
 
 isDashing = false //check if player currently dashing
 isKeyPress = false

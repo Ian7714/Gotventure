@@ -1,6 +1,6 @@
 if isDashing = false
 {	
-	ysp += 0.14 //Gravity
+	ysp += 0.2 //Gravity
 	xsp = 0	//Reset xsp
 }
 
@@ -95,10 +95,10 @@ if isDashing = true //dash timer
 }
 #endregion
 
-move_and_collide(xsp, ysp, oPlatform) //enable player to move
+move_and_collide(xsp, ysp, oPlatformMiddle) //enable player to move
 #endregion
 
-if place_meeting(x, y + 1, oPlatform)
+if place_meeting(x, y + 1, oPlatformMiddle)
 {
 	ysp = 0 //stop the gravity if meeting oPlatform
 	isGrounded = true 
@@ -114,10 +114,10 @@ if place_meeting(x, y, oExitDoor)
 	visible = false //make player invisible after completing the stage
 }
 
-if keyboard_check_pressed(vk_anykey) && VictoryTextMessagesVisible = true
+/*if keyboard_check_pressed(vk_anykey) && VictoryTextMessagesVisible = true
 {
 	room_goto_next() //go to next the room
-}
+}*/
 
 
 
