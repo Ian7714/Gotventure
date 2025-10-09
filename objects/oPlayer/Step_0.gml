@@ -1,6 +1,6 @@
 if isDashing = false
 {	
-	ysp += 0.2 //Gravity
+	ysp += 0.4 //Gravity
 	xsp = 0	//Reset xsp
 }
 
