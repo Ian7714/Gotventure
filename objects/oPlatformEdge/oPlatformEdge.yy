@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"iPlatformFilling",
+  "%Name":"oPlatformEdge",
   "eventList":[],
   "managed":true,
-  "name":"iPlatformFilling",
+  "name":"oPlatformEdge",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,10 +26,10 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
-    "name":"sFilling",
-    "path":"sprites/sFilling/sFilling.yy",
+    "name":"sPlatformEdge",
+    "path":"sprites/sPlatformEdge/sPlatformEdge.yy",
   },
   "spriteMaskId":null,
   "visible":true,

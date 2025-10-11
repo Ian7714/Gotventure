@@ -1,8 +1,13 @@
 if isDashing = false
 {	
-	ysp += 0.4 //Gravity
+	if (isGrounded = false)
+	{
+		ysp += 0.4 //Gravity
+	}
 	xsp = 0	//Reset xsp
 }
+oPlayer.x = xsp
+oPlayer.y = ysp
 
 #region MOVEMENT
 #region Move
@@ -32,14 +37,6 @@ if keyboard_check(ord("S")) || keyboard_check(vk_down)
 	//look down
 }
 
-//Reset Array
-/*function ResetFacing()
-{
-	for(var i = 0; i < array_length(isFacing); i++)
-	{
-		isFacing[i] = false
-	}	
-}*/
 #endregion
 #region Jump
 if keyboard_check_pressed(vk_space) && isGrounded = true
@@ -95,10 +92,10 @@ if isDashing = true //dash timer
 }
 #endregion
 
-move_and_collide(xsp, ysp, oPlatformMiddle) //enable player to move
+//move_and_collide(xsp, ysp, oPlatformMiddle) //enable player to move
 #endregion
 
-if place_meeting(x, y + 1, oPlatformMiddle)
+/*if place_meeting(x, y + 1, oPlatformMiddle)
 {
 	ysp = 0 //stop the gravity if meeting oPlatform
 	isGrounded = true 
@@ -106,7 +103,7 @@ if place_meeting(x, y + 1, oPlatformMiddle)
 else 
 {
 	isGrounded = false
-}
+}*/
 
 if place_meeting(x, y, oExitDoor)
 {
