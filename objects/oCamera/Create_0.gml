@@ -1,7 +1,11 @@
-camera = camera_create()
-vm = matrix_build_lookat(0, 0, -10, 0, 0, 0, 0, 1, 0)
-pm = matrix_build_projection_ortho(640, 360, 1, 3200)
+camWidth = 640 //Camera Width
+camHeight = 360 //Camera Height
 
-viewx = 0
-viewy = 0
-target = oPlayer;
+target = oPlayer //Camera Target
+
+xTo = x; 
+yTo = target.y; //Follow the target or Locate target
+currentPlayerPosY = target.y //target y position while grounded
+
+xpos = 0; //camera x position
+ypos = 0; //camera y position

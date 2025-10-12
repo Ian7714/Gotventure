@@ -11,5 +11,7 @@ dashPower = 20 //the xsp value while dashing
 isDashing = false //check if player currently dashing
 isKeyPress = false
 
+isFacingLeft = false; //Check if the player facing left
+
 isGrounded = false //check if the player on the ground
 VictoryTextMessagesVisible = false //Level Completed visibility

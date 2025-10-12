@@ -6,8 +6,6 @@ if isDashing = false
 	}
 	xsp = 0	//Reset xsp
 }
-oPlayer.x = xsp
-oPlayer.y = ysp
 
 #region MOVEMENT
 #region Move
@@ -15,6 +13,7 @@ if keyboard_check(ord("D")) || keyboard_check(vk_right)
 {
 	if isDashing = false
 	{
+		isFacingLeft = false
 		xsp = playerSpd
 	}
 }
@@ -22,8 +21,17 @@ if keyboard_check(ord("A")) || keyboard_check(vk_left)
 {
 	if isDashing = false
 	{
+		isFacingLeft = true
 		xsp = -playerSpd
 	}
+}
+if (isFacingLeft = true)
+{
+	image_xscale = -1
+}
+else
+{
+	image_xscale = 1
 }
 
 //Facing up and down
@@ -92,18 +100,18 @@ if isDashing = true //dash timer
 }
 #endregion
 
-//move_and_collide(xsp, ysp, oPlatformMiddle) //enable player to move
+move_and_collide(xsp, ysp, all) //enable player to move
 #endregion
 
-/*if place_meeting(x, y + 1, oPlatformMiddle)
+if place_meeting(x, y + 1, all)
 {
 	ysp = 0 //stop the gravity if meeting oPlatform
-	isGrounded = true 
+	isGrounded = true
 }
 else 
 {
 	isGrounded = false
-}*/
+}
 
 if place_meeting(x, y, oExitDoor)
 {
