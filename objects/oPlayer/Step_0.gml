@@ -1,3 +1,4 @@
+#region Gravity
 if isDashing = false
 {	
 	if (isGrounded = false)
@@ -6,6 +7,7 @@ if isDashing = false
 	}
 	xsp = 0	//Reset xsp
 }
+#endregion
 
 #region MOVEMENT
 #region Move
@@ -37,8 +39,9 @@ else
 //Facing up and down
 if keyboard_check(ord("W")) || keyboard_check(vk_up) 
 {
-	//look up
+	//Look Up
 }
+
 
 if keyboard_check(ord("S")) || keyboard_check(vk_down) 
 {
@@ -100,11 +103,17 @@ if isDashing = true //dash timer
 }
 #endregion
 
-move_and_collide(xsp, ysp, all) //enable player to move
+x += xsp; //oPlayer.x is xsp
+y += ysp; //oPlayer.y is ysp
 #endregion
 
-if place_meeting(x, y + 1, all)
+#region COLLISION
+if place_meeting(x, y + ysp, platformGround)
 {
+	while(!place_meeting(x, y + sign(ysp), platformGround))
+	{
+			y += sign(ysp);
+	}
 	ysp = 0 //stop the gravity if meeting oPlatform
 	isGrounded = true
 }
@@ -113,16 +122,17 @@ else
 	isGrounded = false
 }
 
-if place_meeting(x, y, oExitDoor)
+/*if place_meeting(x, y, oExitDoor)
 {
 	VictoryTextMessagesVisible = true //make victory message visible
 	visible = false //make player invisible after completing the stage
-}
+}*/
 
 /*if keyboard_check_pressed(vk_anykey) && VictoryTextMessagesVisible = true
 {
 	room_goto_next() //go to next the room
 }*/
+#endregion
 
 
 

@@ -1,15 +1,28 @@
-xTo = target.x; //Follow the target or Locate target
+if(oPlayer.isFacingLeft = true && isFixedCamera = false)
+{
+	xTo = target.x - 75; //Follow the target or Locate target
+}
+else if(oPlayer.isFacingLeft = false && isFixedCamera = false)
+{
+	xTo = target.x + 75; //Follow the target or Locate target
+}
+else
+{
+	xTo = target.x
+}
+
 
 x += (xTo - x)/20; //Smooth Camera(move more slower when it reaches the target until stop(camera.x == target.x))
 
 xpos = x - camWidth/2 //Make camera.x in the middle(640/2)
 xpos = clamp(xpos, 0, room_width-camera_get_view_width(view_camera[0])) //Make camera cannot overpass the border in the room
 
+
 if(oPlayer.isGrounded = true)
 {
 	currentPlayerPosY = target.y;
 	yTo = target.y;
-	y += (yTo - y)/20 //Smooth Camera
+	y += (yTo - y)/20 //Smooth Camera	
 }
 else if(oPlayer.isGrounded = false && target.y < currentPlayerPosY - 100)
 {
@@ -23,5 +36,4 @@ ypos = clamp(ypos, 0, room_height-camera_get_view_height(view_camera[0]))
 
 
 camera_set_view_pos(view_camera[0], xpos, ypos);
-
-
+	

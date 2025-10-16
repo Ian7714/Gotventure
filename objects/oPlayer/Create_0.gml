@@ -14,4 +14,6 @@ isKeyPress = false
 isFacingLeft = false; //Check if the player facing left
 
 isGrounded = false //check if the player on the ground
+platformGround = [oPlatformEdge, oPlatformMiddle, oPlatformEdgeFull, oPlatformMiddleFull]
+
 VictoryTextMessagesVisible = false //Level Completed visibility
