@@ -11,6 +11,7 @@ if isDashing = false
 
 #region MOVEMENT
 #region Move
+
 if keyboard_check(ord("D")) || keyboard_check(vk_right)
 {
 	if isDashing = false
@@ -19,6 +20,11 @@ if keyboard_check(ord("D")) || keyboard_check(vk_right)
 		xsp = playerSpd
 	}
 }
+else
+{
+	xPrev = x
+}
+
 if keyboard_check(ord("A")) || keyboard_check(vk_left) 
 {
 	if isDashing = false
@@ -27,6 +33,11 @@ if keyboard_check(ord("A")) || keyboard_check(vk_left)
 		xsp = -playerSpd
 	}
 }
+else
+{
+	xPrev = x
+}
+
 if (isFacingLeft = true)
 {
 	image_xscale = -1
@@ -134,8 +145,36 @@ else
 }*/
 #endregion
 
+#region ANIMATION
+//Idle
+if(sprite_index = sPlayerIdle)
+{
+	if(image_index < 1)
+	{
+		image_speed = 0.1
+	}
+	else
+	{
+		image_speed = 1
+	}
+}
 
+//Move
+if(xPrev != x)
+{
+	image_speed = 1
+	sprite_index = sPlayerMove
+}
+else
+{
+	sprite_index = sPlayerIdle
+}
 
-
+//Jump
+if(isGrounded = false)
+{
+	sprite_index = sPlayerJump
+}
+#endregion
 
 

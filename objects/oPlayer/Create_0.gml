@@ -1,5 +1,6 @@
 visible = true //make player visible
 
+xPrev = 0
 xsp = 0
 ysp = 0
 
