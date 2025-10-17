@@ -1,13 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"VictoryTextMessages",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oWall",
+  "eventList":[],
   "managed":true,
-  "name":"VictoryTextMessages",
+  "name":"oWall",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -30,8 +26,11 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
-  "spriteId":null,
+  "solid":true,
+  "spriteId":{
+    "name":"sBox",
+    "path":"sprites/sBox/sBox.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

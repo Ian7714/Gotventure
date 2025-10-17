@@ -1,10 +1,7 @@
 #region Gravity
 if isDashing = false
 {	
-	if (isGrounded = false)
-	{
-		ysp += 0.4 //Gravity
-	}
+	ysp += 0.4 //Gravity
 	xsp = 0	//Reset xsp
 }
 #endregion
@@ -114,17 +111,15 @@ if isDashing = true //dash timer
 }
 #endregion
 
-x += xsp; //oPlayer.x is xsp
-y += ysp; //oPlayer.y is ysp
+//x += xsp; //oPlayer.x is xsp
+//y += ysp; //oPlayer.y is ysp
+
+move_and_collide(xsp, ysp, platformGround)
 #endregion
 
 #region COLLISION
-if place_meeting(x, y + ysp, platformGround)
+if place_meeting(x , y + 1, platformGround)
 {
-	while(!place_meeting(x, y + sign(ysp), platformGround))
-	{
-			y += sign(ysp);
-	}
 	ysp = 0 //stop the gravity if meeting oPlatform
 	isGrounded = true
 }
@@ -144,6 +139,7 @@ else
 	room_goto_next() //go to next the room
 }*/
 #endregion
+
 
 #region ANIMATION
 //Idle

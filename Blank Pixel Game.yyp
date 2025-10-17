@@ -39,6 +39,7 @@
     {"id":{"name":"oPlatformMiddleFull","path":"objects/oPlatformMiddleFull/oPlatformMiddleFull.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
     {"id":{"name":"oSpike","path":"objects/oSpike/oSpike.yy",},},
+    {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},},
     {"id":{"name":"VictoryTextMessages","path":"objects/VictoryTextMessages/VictoryTextMessages.yy",},},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
