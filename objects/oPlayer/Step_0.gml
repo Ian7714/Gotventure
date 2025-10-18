@@ -72,6 +72,7 @@ if keyboard_check_pressed(ord("X")) && isDashing = false
 {
 	isDashing = true
 	DashTimer = 4 //how long the steps to dash, less means more faster but much shorter
+	dashAnimTimer = 20
 	if keyboard_check(ord("D")) || keyboard_check(vk_right)
 	{
 		isKeyPress = true
@@ -96,7 +97,14 @@ if keyboard_check_pressed(ord("X")) && isDashing = false
 	
 	if isKeyPress = false
 	{
-		xsp = dashPower	
+		if(image_xscale = -1)
+		{
+			xsp = -dashPower
+		}
+		else
+		{
+			xsp = dashPower	
+		}
 	}
 	isKeyPress = false
 }
@@ -108,6 +116,11 @@ if isDashing = true //dash timer
 	{
 		isDashing = false
 	}
+}
+
+if(dashAnimTimer > 0)
+{
+	dashAnimTimer--	
 }
 #endregion
 
@@ -147,7 +160,7 @@ if(sprite_index = sPlayerIdle)
 {
 	if(image_index < 1)
 	{
-		image_speed = 0.1
+		image_speed = 0.025
 	}
 	else
 	{
@@ -167,10 +180,15 @@ else
 }
 
 //Jump
-if(isGrounded = false)
+if(isGrounded = false && dashAnimTimer <= 0)
 {
 	sprite_index = sPlayerJump
 }
-#endregion
 
+//Dash
+if(dashAnimTimer > 0)
+{
+	sprite_index = sPlayerBored
+}
+#endregion
 

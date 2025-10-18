@@ -8,6 +8,7 @@ playerSpd = 3 //speed
 jumpPower = 8 //jump
 DashTimer = 0
 dashPower = 20 //the xsp value while dashing
+dashAnimTimer = 0
 
 isDashing = false //check if player currently dashing
 isKeyPress = false
