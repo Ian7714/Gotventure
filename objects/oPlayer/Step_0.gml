@@ -1,7 +1,10 @@
 #region Gravity
 if isDashing = false
 {	
-	ysp += 0.4 //Gravity
+	if(isGrounded = false)
+	{
+		ysp += grav //Gravity
+	}
 	xsp = 0	//Reset xsp
 }
 #endregion
@@ -61,6 +64,10 @@ if keyboard_check(ord("S")) || keyboard_check(vk_down)
 if keyboard_check_pressed(vk_space) && isGrounded = true
 {
 	ysp = -jumpPower //max jump power
+}
+else
+{
+	yPrev = y
 }
 if ysp < 0 && !keyboard_check(vk_space) && isDashing = false
 {
@@ -123,34 +130,35 @@ if(dashAnimTimer > 0)
 	dashAnimTimer--	
 }
 #endregion
-
-//x += xsp; //oPlayer.x is xsp
-//y += ysp; //oPlayer.y is ysp
-
-move_and_collide(xsp, ysp, platformGround)
 #endregion
 
+
 #region COLLISION
-if place_meeting(x , y + 1, platformGround)
+move_and_collide(xsp, ysp, platformGround)	
+if(ysp >= 0)
 {
-	ysp = 0 //stop the gravity if meeting oPlatform
-	isGrounded = true
+	if place_meeting(x , y + 1, platformGround)
+	{
+		ysp = 0 //stop the gravity if meeting oPlatform
+		isGrounded = true
+	}
+	else 
+	{
+		isGrounded = false
+	}
 }
-else 
+else
 {
-	isGrounded = false
+	if place_meeting(x , y + ysp, platformGround)
+	{
+		ysp = 0 //stop the gravity if meeting oPlatform
+	}
+	else 
+	{
+		isGrounded = false
+	}
 }
 
-/*if place_meeting(x, y, oExitDoor)
-{
-	VictoryTextMessagesVisible = true //make victory message visible
-	visible = false //make player invisible after completing the stage
-}*/
-
-/*if keyboard_check_pressed(vk_anykey) && VictoryTextMessagesVisible = true
-{
-	room_goto_next() //go to next the room
-}*/
 #endregion
 
 

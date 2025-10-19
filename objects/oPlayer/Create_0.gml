@@ -1,6 +1,9 @@
 visible = true //make player visible
 
+grav = 0.4
+
 xPrev = 0
+yPrev = 0
 xsp = 0
 ysp = 0
 
@@ -17,5 +20,6 @@ isFacingLeft = false; //Check if the player facing left
 
 isGrounded = false //check if the player on the ground
 platformGround = [oPlatformEdge, oPlatformMiddle, oPlatformEdgeFull, oPlatformMiddleFull]
+isStable = false
 
 VictoryTextMessagesVisible = false //Level Completed visibility
