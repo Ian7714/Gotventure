@@ -135,16 +135,25 @@ if(dashAnimTimer > 0)
 
 #region COLLISION
 move_and_collide(xsp, ysp, platformGround)	
+
 if(ysp >= 0)
 {
-	if place_meeting(x , y + 1, platformGround)
+	if(place_meeting(x , y + 1, platformGround))
 	{
 		ysp = 0 //stop the gravity if meeting oPlatform
 		isGrounded = true
 	}
 	else 
 	{
-		isGrounded = false
+		if(place_meeting(x , y + ysp, platformGround) && isGrounded = false)
+		{
+			y += 1
+			isGrounded = true
+		}
+		else
+		{
+			isGrounded = false	
+		}
 	}
 }
 else
