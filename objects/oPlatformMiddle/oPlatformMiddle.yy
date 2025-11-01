@@ -6,8 +6,8 @@
   "name":"oPlatformMiddle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Brick",
+    "path":"folders/Objects/Brick.yy",
   },
   "parentObjectId":null,
   "persistent":false,

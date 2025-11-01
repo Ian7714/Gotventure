@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"oWall",
+  "%Name":"oPlatformMiddleFilling",
   "eventList":[],
   "managed":true,
-  "name":"oWall",
+  "name":"oPlatformMiddleFilling",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Brick",
+    "path":"folders/Objects/Brick.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":true,
   "spriteId":{
-    "name":"sBox",
-    "path":"sprites/sBox/sBox.yy",
+    "name":"sPlatformFilling",
+    "path":"sprites/sPlatformFilling/sPlatformFilling.yy",
   },
   "spriteMaskId":null,
   "visible":true,

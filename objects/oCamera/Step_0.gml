@@ -1,8 +1,8 @@
-if(oPlayer.isFacingLeft = true && isFixedCamera = false)
+if(oPlayer.isFacingLeft = true)
 {
 	xTo = target.x - 75; //Follow the target or Locate target
 }
-else if(oPlayer.isFacingLeft = false && isFixedCamera = false)
+else if(oPlayer.isFacingLeft = false)
 {
 	xTo = target.x + 75; //Follow the target or Locate target
 }

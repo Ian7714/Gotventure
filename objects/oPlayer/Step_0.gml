@@ -1,72 +1,87 @@
 #region Gravity
-if isDashing = false
+if(isDashing = false)
 {	
-	if(isGrounded = false && dashAnimTimer > 0)
+	if(instance_exists(oDirtMonster) && oDirtMonster.isKnockback = false)
 	{
-		ysp = 0 //make player stop after dash
-		ysp += grav //Gravity
+		if(isGrounded = false && dashAnimTimer > 0)
+		{
+			ysp = 0 //make player stop after dash
+			ysp += grav //Gravity
+		}
+		else if(isGrounded = false)
+		{
+			ysp += grav
+		}
+		xsp = 0 //Reset xsp
 	}
-	else if(isGrounded = false)
-	{
-		ysp += grav
-	}
-	xsp = 0 //Reset xsp
 }
 #endregion
+
+if(playerHealth <= 0)
+{
+	isAlive = false
+}
+
+if(isAlive = false)
+{
+	sprite_index = sPlayerBored
+}
 
 #region MOVEMENT
 #region Move
 
-if keyboard_check(ord("D")) || keyboard_check(vk_right)
+if(isMoving = true && isAlive = true)
 {
-	if isDashing = false
+	if keyboard_check(ord("D")) || keyboard_check(vk_right) 
 	{
-		isFacingLeft = false
-		xsp = playerSpd
+		if isDashing = false
+		{
+			isFacingLeft = false
+			xsp = playerSpd
+		}
+	}
+	else
+	{
+		xPrev = x
+	}
+
+	if keyboard_check(ord("A")) || keyboard_check(vk_left)
+	{
+		if isDashing = false
+		{
+			isFacingLeft = true
+			xsp = -playerSpd
+		}
+	}
+	else
+	{
+		xPrev = x
+	}
+
+	if (isFacingLeft = true)
+	{
+		image_xscale = -1
+	}
+	else
+	{
+		image_xscale = 1
+	}
+
+	//Facing up and down
+	if keyboard_check(ord("W")) || keyboard_check(vk_up)
+	{
+		//Look Up
+	}
+
+
+	if keyboard_check(ord("S")) || keyboard_check(vk_down)
+	{
+		//look down
 	}
 }
-else
-{
-	xPrev = x
-}
-
-if keyboard_check(ord("A")) || keyboard_check(vk_left) 
-{
-	if isDashing = false
-	{
-		isFacingLeft = true
-		xsp = -playerSpd
-	}
-}
-else
-{
-	xPrev = x
-}
-
-if (isFacingLeft = true)
-{
-	image_xscale = -1
-}
-else
-{
-	image_xscale = 1
-}
-
-//Facing up and down
-if keyboard_check(ord("W")) || keyboard_check(vk_up) 
-{
-	//Look Up
-}
-
-
-if keyboard_check(ord("S")) || keyboard_check(vk_down) 
-{
-	//look down
-}
-
 #endregion
 #region Jump
-if(keyboard_check_pressed(vk_space) && (isGrounded = true || isJumpMercy = true))
+if(keyboard_check_pressed(vk_space) && (isGrounded = true || isJumpMercy = true) && isAlive = true)
 {
 	ysp = -jumpPower //max jump power
 }
@@ -80,13 +95,13 @@ if(ysp < 0 && !keyboard_check(vk_space) && isDashing = false)
 }
 #endregion
 #region Dash
-if keyboard_check_pressed(ord("X")) && isDashing = false
+if keyboard_check_pressed(ord("X")) && isDashing = false && isAlive = true
 {
 	xsp = 0
 	ysp = 0
 	isDashing = true
 	DashTimer = 4 //how long the steps to dash, less means more faster but much shorter
-	dashAnimTimer = 20
+	dashAnimTimer = 15 //dash Animation
 	if keyboard_check(ord("D")) || keyboard_check(vk_right)
 	{
 		isKeyPress = true
@@ -139,9 +154,11 @@ if(dashAnimTimer > 0)
 #endregion
 #endregion
 
-
 #region COLLISION
-move_and_collide(xsp, ysp, platformGround)//make player can move, and can collide with array platformGround
+if(isAlive = true)
+{
+	move_and_collide(xsp, ysp, platformGround)//make player can move, and can collide with array platformGround
+}
 
 if(ysp >= 0)//check if the player fall
 {
@@ -197,6 +214,8 @@ function JumpMercy()
 
 
 #region ANIMATION
+if(isAlive = true)
+{
 //Idle
 if(sprite_index = sPlayerIdle)
 {
@@ -231,6 +250,7 @@ if(isGrounded = false && dashAnimTimer <= 0)
 if(dashAnimTimer > 0)
 {
 	sprite_index = sPlayerBored
+}
 }
 #endregion
 

@@ -18,6 +18,10 @@ isKeyPress = false
 
 isFacingLeft = false; //Check if the player facing left
 
+isMoving = true
+isAlive = true
+playerHealth = 3
+
 isGrounded = false //check if the player on the ground
 platformGround = [oPlatformEdge, oPlatformMiddle, oPlatformEdgeFull, oPlatformMiddleFull, oPlatformDiagonalDown, oPlatformDiagonalUp]
 jumpHangFrames = 4;
