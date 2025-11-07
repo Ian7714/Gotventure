@@ -1,10 +1,17 @@
-if(oPlayer.isFacingLeft = true)
+if(target == oPlayer)
 {
-	xTo = target.x - 75; //Follow the target or Locate target
-}
-else if(oPlayer.isFacingLeft = false)
-{
-	xTo = target.x + 75; //Follow the target or Locate target
+	if(oPlayer.isFacingLeft = true)
+	{
+		xTo = target.x - 75; //Follow the target or Locate target
+	}
+	else if(oPlayer.isFacingLeft = false)
+	{
+		xTo = target.x + 75; //Follow the target or Locate target
+	}
+	else
+	{
+		xTo = target.x
+	}
 }
 else
 {

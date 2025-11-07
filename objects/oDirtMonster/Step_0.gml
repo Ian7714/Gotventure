@@ -1,5 +1,10 @@
 ysp += grav //apply gravity
 
+if(oPlayer.isAlive = false)
+{
+	solid = false
+}
+
 if(isAlive = true)
 {
 	xsp = moveSpd //give xsp a value

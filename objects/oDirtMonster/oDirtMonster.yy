@@ -30,7 +30,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":true,
+  "solid":false,
   "spriteId":{
     "name":"sDirtMonsterMove",
     "path":"sprites/sDirtMonsterMove/sDirtMonsterMove.yy",

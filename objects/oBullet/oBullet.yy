@@ -1,9 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"oCameraTarget1Exit",
-  "eventList":[],
+  "%Name":"oBullet",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"oCameraTarget1Exit",
+  "name":"oBullet",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -28,9 +31,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sCameraAreaExit",
-    "path":"sprites/sCameraAreaExit/sCameraAreaExit.yy",
+    "name":"sBullet",
+    "path":"sprites/sBullet/sBullet.yy",
   },
-  "spriteMaskId":null,
-  "visible":false,
+  "spriteMaskId":{
+    "name":"sBullet",
+    "path":"sprites/sBullet/sBullet.yy",
+  },
+  "visible":true,
 }

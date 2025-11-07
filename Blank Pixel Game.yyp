@@ -28,6 +28,7 @@
   "name":"Blank Pixel Game",
   "resources":[
     {"id":{"name":"oBox","path":"objects/oBox/oBox.yy",},},
+    {"id":{"name":"oBullet","path":"objects/oBullet/oBullet.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"oCameraPreview","path":"objects/oCameraPreview/oCameraPreview.yy",},},
     {"id":{"name":"oCameraTarget1","path":"objects/oCameraTarget1/oCameraTarget1.yy",},},
@@ -53,6 +54,7 @@
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"id":{"name":"BGM___Give_Myself_To_You__Instrumental_","path":"sounds/BGM___Give_Myself_To_You__Instrumental_/BGM___Give_Myself_To_You__Instrumental_.yy",},},
     {"id":{"name":"sBox","path":"sprites/sBox/sBox.yy",},},
+    {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},},
     {"id":{"name":"sCameraAreaEnter","path":"sprites/sCameraAreaEnter/sCameraAreaEnter.yy",},},
     {"id":{"name":"sCameraAreaExit","path":"sprites/sCameraAreaExit/sCameraAreaExit.yy",},},
     {"id":{"name":"sCameraPreview","path":"sprites/sCameraPreview/sCameraPreview.yy",},},

@@ -9,9 +9,15 @@ ysp = 0
 
 playerSpd = 3 //speed
 jumpPower = 8 //jump
+
 DashTimer = 0
 dashPower = 20 //the xsp value while dashing
 dashAnimTimer = 0
+
+isShooting = false
+bulletDirectionX = 0
+bulletDirectionY = 0
+isVerticalDash = false
 
 isDashing = false //check if player currently dashing
 isKeyPress = false
@@ -28,4 +34,3 @@ jumpHangFrames = 4;
 jumpHangTimer = 0;
 isJumpMercy = false
 
-VictoryTextMessagesVisible = false //Level Completed visibility

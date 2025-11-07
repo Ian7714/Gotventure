@@ -25,6 +25,7 @@ if(playerHealth <= 0)
 if(isAlive = false)
 {
 	sprite_index = sPlayerBored
+	solid = false
 }
 
 #region MOVEMENT
@@ -32,7 +33,7 @@ if(isAlive = false)
 
 if(isMoving = true && isAlive = true)
 {
-	if keyboard_check(ord("D")) || keyboard_check(vk_right) 
+	if keyboard_check(ord("D")) || keyboard_check(vk_right) || keyboard_check(ord("L"))
 	{
 		if isDashing = false
 		{
@@ -45,7 +46,7 @@ if(isMoving = true && isAlive = true)
 		xPrev = x
 	}
 
-	if keyboard_check(ord("A")) || keyboard_check(vk_left)
+	if keyboard_check(ord("A")) || keyboard_check(vk_left) || keyboard_check(ord("J"))
 	{
 		if isDashing = false
 		{
@@ -95,33 +96,40 @@ if(ysp < 0 && !keyboard_check(vk_space) && isDashing = false)
 }
 #endregion
 #region Dash
-if keyboard_check_pressed(ord("X")) && isDashing = false && isAlive = true
+if keyboard_check_pressed(ord("X")) || keyboard_check_pressed(ord("M")) && isDashing = false && isAlive = true
 {
 	xsp = 0
 	ysp = 0
+	
+	isShooting = true
+	
 	isDashing = true
 	DashTimer = 4 //how long the steps to dash, less means more faster but much shorter
 	dashAnimTimer = 15 //dash Animation
-	if keyboard_check(ord("D")) || keyboard_check(vk_right)
+	if keyboard_check(ord("D")) || keyboard_check(vk_right) || keyboard_check(ord("J"))
 	{
 		isKeyPress = true
 		xsp = dashPower //the xsp value while dashing
+		bulletDirectionX = -1
 	}
-	else if keyboard_check(ord("A")) || keyboard_check(vk_left) 
+	else if keyboard_check(ord("A")) || keyboard_check(vk_left) || keyboard_check(ord("L")) 
 	{
 		isKeyPress = true
 		xsp = -dashPower
+		bulletDirectionX = 1
 	}
 	
-	if keyboard_check(ord("W")) || keyboard_check(vk_up) 
+	if keyboard_check(ord("W")) || keyboard_check(vk_up) || keyboard_check(ord("K"))
 	{
 		isKeyPress = true
 		ysp = -dashPower
+		bulletDirectionY = 1
 	}
-	else if keyboard_check(ord("S")) || keyboard_check(vk_down) 
+	else if keyboard_check(ord("S")) || keyboard_check(vk_down) || keyboard_check(ord("I"))
 	{
 		isKeyPress = true
 		ysp = dashPower
+		bulletDirectionY = -1
 	}
 	
 	if isKeyPress = false
@@ -136,6 +144,14 @@ if keyboard_check_pressed(ord("X")) && isDashing = false && isAlive = true
 		}
 	}
 	isKeyPress = false
+}
+
+if(isShooting = true)
+{
+	instance_create_layer(x, y, "Instances", oBullet)
+	bulletDirectionX = 0
+	bulletDirectionY = 0
+	isShooting = false
 }
 
 if isDashing = true //dash timer
@@ -211,7 +227,6 @@ function JumpMercy()
 }
 
 #endregion
-
 
 #region ANIMATION
 if(isAlive = true)
