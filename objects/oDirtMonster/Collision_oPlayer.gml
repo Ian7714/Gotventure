@@ -1,4 +1,4 @@
-if(damageCooldown <= 0)
+/*if(damageCooldown <= 0)
 {
 	isKnockback = true //do Knockback
 	knockbackTimer = knockbackTimerRate
@@ -7,4 +7,6 @@ if(damageCooldown <= 0)
 else
 {
 	damageCooldown--
-}
+}*/
+
+KnockbackBool()

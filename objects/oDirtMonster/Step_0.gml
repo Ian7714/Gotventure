@@ -1,5 +1,5 @@
 ysp += grav //apply gravity
-
+#region LOGIC and MOVEMENT
 if(oPlayer.isAlive = false)
 {
 	solid = false
@@ -13,8 +13,10 @@ else
 {
 	xsp = 0
 }
-
 move_and_collide(xsp, ysp, oPlayer.platformGround) //make the object can move and collide with platform/wall
+#endregion
+
+#region Collision
 if(place_meeting(x, y + 1, oPlayer.platformGround))
 {
 	ysp = 0 //stop the ysp when toucing ground
@@ -41,8 +43,10 @@ if(place_meeting(x + sign(xsp), y, oPlayer.platformGround))
 		image_xscale *= -1 //flip sprite
 	}
 }
+#endregion
 
-if(isKnockback = true)
+#region KNOCKBACK
+/*if(isKnockback = true)
 {
 	knockbackTimer--
 	if(knockbackTimer <= 0)
@@ -79,4 +83,7 @@ if(isKnockback = true)
 		}
 		oPlayer.ysp = 4
 	}
-}
+}*/
+
+KnockbackStep(oDirtMonster, oPlayer)
+#endregion
