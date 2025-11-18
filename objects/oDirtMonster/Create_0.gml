@@ -18,18 +18,12 @@ else
 facingTimer = 0 //prevent the object from glicthing when touch platform/wall due to high framerate
 facingRate = 5
 
-/*
-#region Knockback
-damageCooldown = 0 //prevent the object from damage player too fast
-damageCooldownRate = 1
+knockbackX = 0;
+knockbackY = 0;
+knockbackTimer = 0;
 
-isKnockback = false //do Knockback situation to player
-knockbackTimer = 0
-knockbackTimerRate = 8
-knockbackPower = 10
-#endregion*/
+//KnockbackCreate()
 
-KnockbackCreate()
-
+isMoving = true
 isAlive = true //Check if the object alive(currently no use)
 

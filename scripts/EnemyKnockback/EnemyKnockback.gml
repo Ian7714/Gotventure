@@ -1,4 +1,4 @@
-function KnockbackCreate()
+/*function KnockbackCreate()
 {
 	damageCooldown = 0 //prevent the object from damage player too fast
 	damageCooldownRate = 1
@@ -32,7 +32,7 @@ function KnockbackStep(object, target)
 		{
 			isKnockback = false
 			target.isMoving = true
-			target.playerHealth -= 1 //decrease player health by 1
+			//target.playerHealth -= 1 //decrease player health by 1
 		}
 		else
 		{
@@ -63,4 +63,4 @@ function KnockbackStep(object, target)
 			target.ysp = 4
 		}
 	}
-}
+}*/

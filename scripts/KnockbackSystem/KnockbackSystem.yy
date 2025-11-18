@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"Knockback",
+  "%Name":"KnockbackSystem",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"Knockback",
+  "name":"KnockbackSystem",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

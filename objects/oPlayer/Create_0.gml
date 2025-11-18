@@ -34,3 +34,6 @@ jumpHangFrames = 4;
 jumpHangTimer = 0;
 isJumpMercy = false
 
+knockbackX = 0;
+knockbackY = 0;
+knockbackTimer = 0;

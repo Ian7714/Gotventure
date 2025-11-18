@@ -1,19 +1,8 @@
 #region Gravity
-if(isDashing = false)
+if(isDashing = false && isMoving = true)
 {	
-	if(instance_exists(oDirtMonster) && oDirtMonster.isKnockback = false)
-	{
-		if(isGrounded = false && dashAnimTimer > 0)
-		{
-			ysp = 0 //make player stop after dash
-			ysp += grav //Gravity
-		}
-		else if(isGrounded = false)
-		{
-			ysp += grav
-		}
-		xsp = 0 //Reset xsp
-	}
+	ysp += grav //Gravity
+	xsp = 0 //Reset xsp
 }
 #endregion
 
@@ -66,18 +55,6 @@ if(isMoving = true && isAlive = true)
 	else
 	{
 		image_xscale = 1
-	}
-
-	//Facing up and down
-	if keyboard_check(ord("W")) || keyboard_check(vk_up)
-	{
-		//Look Up
-	}
-
-
-	if keyboard_check(ord("S")) || keyboard_check(vk_down)
-	{
-		//look down
 	}
 }
 #endregion
@@ -268,4 +245,41 @@ if(dashAnimTimer > 0)
 }
 }
 #endregion
+if(knockbackTimer > 0)
+{
+	isMoving = false
+	if(x > oDirtMonster.x)
+	{
+		xsp = (knockbackX * abs(x - oDirtMonster.x)) / 10; //calculate position	within player and the enemy, then put the value on the power
+	}
+	else
+	{
+		xsp = -(knockbackX * abs(x - oDirtMonster.x)) / 10;
+	}
+	ysp = -knockbackY;	
+	knockbackTimer--;
+}
+else
+{
+	isMoving = true;
+}	
 
+/*function PlayerKnockback(target, targetXsp, targetYsp, isMoving)
+{
+	isMoving = false
+	knockbackTimer = knockbackTimerRate
+	while(knockbackTimer > 0)
+	{
+		knockbackTimer--;
+		if(target.x > x)
+		{
+			targetXsp = knockbackPower
+		}
+		else
+		{
+			targetXsp = -knockbackPower
+		}
+		target.x += targetXsp
+	}
+	isMoving = true
+}*/
