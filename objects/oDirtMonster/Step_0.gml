@@ -10,11 +10,11 @@ if(knockbackTimer > 0)
 	isMoving = false
 	if(x > oPlayer.x)
 	{
-		xsp = (knockbackX * abs(x - oPlayer.x)) / 30; //calculate position	within player and the enemy, then put the value on the power
+		xsp = knockbackX; //calculate position	within player and the enemy, then put the value on the power
 	}
 	else
 	{
-		xsp = -(knockbackX * abs(x - oPlayer.x)) / 30;
+		xsp = -knockbackX;
 	}
 	ysp = -knockbackY;	
 	knockbackTimer--;
@@ -54,47 +54,4 @@ if(place_meeting(x + sign(xsp), y, oPlayer.platformGround))
 		image_xscale *= -1 //flip sprite
 	}
 }
-#endregion
-
-#region KNOCKBACK
-/*if(isKnockback = true)
-{
-	knockbackTimer--
-	if(knockbackTimer <= 0)
-	{
-		isKnockback = false
-		oPlayer.isMoving = true
-		//oPlayer.playerHealth -= 1 //decrease player health by 1
-	}
-	else
-	{
-		oPlayer.isMoving = false
-		
-		if(isFacingLeft = false)
-		{
-			if(x > oPlayer.x)
-			{
-				oPlayer.xsp = sign(-xsp) * knockbackPower //make the player move back when touch the object
-			}
-			else
-			{
-				oPlayer.xsp = sign(xsp) * knockbackPower //make the player move back when touch the object
-			}
-		}
-		else if(isFacingLeft = true)
-		{
-			if(x < oPlayer.x)
-			{
-				oPlayer.xsp = sign(-xsp) * knockbackPower //make the player move back when touch the object
-			}
-			else
-			{
-				oPlayer.xsp = sign(xsp) * knockbackPower //make the player move back when touch the object
-			}
-		}
-		oPlayer.ysp = 4
-	}
-}*/
-
-//KnockbackStep(oDirtMonster, oPlayer)
 #endregion

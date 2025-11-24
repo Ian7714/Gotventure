@@ -1,26 +1,34 @@
-#region Gravity
+#region GRAVITY
 if(isDashing = false && isMoving = true)
 {	
-	ysp += grav //Gravity
-	xsp = 0 //Reset xsp
+	ysp += grav; //Gravity
+	xsp = 0; //Reset xsp
 }
 #endregion
 
+#region LOGIC
 if(playerHealth <= 0)
 {
-	isAlive = false
+	isAlive = false;
+	if(isGrounded = true)
+	{
+		isMoving = false;
+	}
 }
 
 if(isAlive = false)
 {
-	sprite_index = sPlayerBored
-	solid = false
+	sprite_index = sPlayerBored;
+	solid = false;
 }
+#endregion
 
+if(isAlive = true) //If player Alive
+{
 #region MOVEMENT
 #region Move
 
-if(isMoving = true && isAlive = true)
+if(isMoving = true)
 {
 	if keyboard_check(ord("D")) || keyboard_check(vk_right) || keyboard_check(ord("L"))
 	{
@@ -72,77 +80,82 @@ if(ysp < 0 && !keyboard_check(vk_space) && isDashing = false)
 	ysp = max(ysp, -jumpPower/2.5) //If let go of space, ysp will not be -2.5
 }
 #endregion
-#region Dash
+#region Dash and Shooting
 if keyboard_check_pressed(ord("X")) || keyboard_check_pressed(ord("M")) && isDashing = false && isAlive = true
 {
-	xsp = 0
-	ysp = 0
+	xsp = 0;
+	ysp = 0;
 	
-	isShooting = true
+	isShooting = true;
 	
-	isDashing = true
-	DashTimer = 4 //how long the steps to dash, less means more faster but much shorter
-	dashAnimTimer = 15 //dash Animation
+	isDashing = true;
+	DashTimer = 4; //how long the steps to dash, less means more faster but much shorter
+	dashAnimTimer = 15; //dash Animation
 	if keyboard_check(ord("D")) || keyboard_check(vk_right) || keyboard_check(ord("J"))
 	{
-		isKeyPress = true
-		xsp = dashPower //the xsp value while dashing
-		bulletDirectionX = -1
+		isKeyPress = true; //Check if the direction input "WASD or arrows" is pressed
+		xsp = dashPower; //the xsp value while dashing
+		bulletDirectionX = -1; //value for Direction of the bullet
+		bulletRotation = 0; //value for Rotation of the bullet
 	}
 	else if keyboard_check(ord("A")) || keyboard_check(vk_left) || keyboard_check(ord("L")) 
 	{
-		isKeyPress = true
-		xsp = -dashPower
-		bulletDirectionX = 1
+		isKeyPress = true;
+		xsp = -dashPower;
+		bulletDirectionX = 1;
+		bulletRotation = 0;
 	}
 	
 	if keyboard_check(ord("W")) || keyboard_check(vk_up) || keyboard_check(ord("K"))
 	{
-		isKeyPress = true
-		ysp = -dashPower
-		bulletDirectionY = 1
+		isKeyPress = true;
+		ysp = -dashPower;
+		bulletDirectionY = 1;
+		bulletRotation = 90;
 	}
 	else if keyboard_check(ord("S")) || keyboard_check(vk_down) || keyboard_check(ord("I"))
 	{
-		isKeyPress = true
-		ysp = dashPower
-		bulletDirectionY = -1
+		isKeyPress = true;
+		ysp = dashPower;
+		bulletDirectionY = -1;
+		bulletRotation = 90;
 	}
 	
 	if isKeyPress = false
 	{
+		bulletRotation = 0;
 		if(image_xscale = -1)
 		{
-			xsp = -dashPower
+			xsp = -dashPower;
 		}
 		else
 		{
-			xsp = dashPower	
+			xsp = dashPower;
 		}
 	}
-	isKeyPress = false
+	isKeyPress = false;
 }
 
 if(isShooting = true)
 {
-	instance_create_layer(x, y, "Instances", oBullet)
-	bulletDirectionX = 0
-	bulletDirectionY = 0
-	isShooting = false
+	instance_create_layer(x, y, "Instances", oBullet);
+	bulletDirectionX = 0;
+	bulletDirectionY = 0;
+	isShooting = false;
 }
 
 if isDashing = true //dash timer
 {
-	DashTimer--
+	DashTimer--;
 	if DashTimer <= 0
 	{
-		isDashing = false
+		isDashing = false;
 	}
 }
 
 if(dashAnimTimer > 0)
 {
-	dashAnimTimer--	
+	dashAnimTimer--;
 }
 #endregion
 #endregion
@@ -190,6 +203,7 @@ else
 	}
 }
 
+//Make the player has a little bit of time to jump while leaving platform
 function JumpMercy()
 {
 	isJumpMercy = true
@@ -206,8 +220,6 @@ function JumpMercy()
 #endregion
 
 #region ANIMATION
-if(isAlive = true)
-{
 //Idle
 if(sprite_index = sPlayerIdle)
 {
@@ -243,43 +255,35 @@ if(dashAnimTimer > 0)
 {
 	sprite_index = sPlayerBored
 }
-}
 #endregion
+
+#region Knockback
 if(knockbackTimer > 0)
 {
 	isMoving = false
-	if(x > oDirtMonster.x)
+	if(x > knocbacker.x)
 	{
-		xsp = (knockbackX * abs(x - oDirtMonster.x)) / 10; //calculate position	within player and the enemy, then put the value on the power
+		//calculate position	within player and the enemy, then put the value on the power
+		xsp = (knockbackX * abs(x - oDirtMonster.x)) / 10; 
 	}
 	else
 	{
 		xsp = -(knockbackX * abs(x - oDirtMonster.x)) / 10;
 	}
-	ysp = -knockbackY;	
+	if(knockbackTimer > 5)
+	{
+		ysp = -knockbackY;	
+	}
+	else
+	{
+		ysp += grav;
+	}
 	knockbackTimer--;
 }
 else
 {
 	isMoving = true;
-}	
-
-/*function PlayerKnockback(target, targetXsp, targetYsp, isMoving)
-{
-	isMoving = false
-	knockbackTimer = knockbackTimerRate
-	while(knockbackTimer > 0)
-	{
-		knockbackTimer--;
-		if(target.x > x)
-		{
-			targetXsp = knockbackPower
-		}
-		else
-		{
-			targetXsp = -knockbackPower
-		}
-		target.x += targetXsp
-	}
-	isMoving = true
-}*/
+	knocbacker = 0;
+}
+#endregion
+}

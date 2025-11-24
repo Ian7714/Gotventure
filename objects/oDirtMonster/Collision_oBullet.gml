@@ -1,1 +1,1 @@
-KnocbackValue(1, 2, 10);
+KnocbackValue(6, 2, 10);
